@@ -21,15 +21,33 @@ namespace Calc.View
     /// </summary>
     public partial class MainWindowView : Window
     {
+        static List<Button> ButtonList;
+
         public MainWindowView()
         {
             InitializeComponent();
-            InputTextBox.Focus();
+            ButtonList = new List<Button> { BackSpaceButton, SighnChangerButton, RootFuncButton, SevenButton,
+                    EightButton, NineButton, DevideFuncButton, PercenFuncButton, FourButton, FiveButton, SixButton,
+                    MultiplyFuncButton, HyperbolaFuncButton, OneButton, TwoButton, ThreeButton, MinusFuncButton, ZeroButton,
+                    DecimalButton, PlusFuncButton, ResultButton, StyleChanger, OpenBracket, CloseBracket, ClearButton, ClearEntryButton };
         }
 
-        private void InputTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            InputTextBox.Focus();
+        private void StyleChanger_Click(object sender, RoutedEventArgs e)
+        {                                                                                                        
+            if (Grid.Style == (Style)Resources["GridMainStyle"])
+            {
+                Grid.Style = (Style)Resources["GridSecondaryStyle"];
+                TextBoxBackground.Style = (Style)Resources["TextBoxBackgroundSecondaryStyle"];
+                foreach(Button b in ButtonList)
+                    b.Style = (Style)Resources["ButtonSecondaryStyle"];
+            }
+            else if(Grid.Style == (Style)Resources["GridSecondaryStyle"])
+            {
+                Grid.Style = (Style)Resources["GridMainStyle"];
+                TextBoxBackground.Style = (Style)Resources["TextBoxBackgroundMainStyle"];
+                foreach (Button b in ButtonList)
+                    b.Style = (Style)Resources["ButtonMainStyle"];
+            }
         }
     }
 }

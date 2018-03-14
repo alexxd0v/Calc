@@ -173,18 +173,11 @@ namespace Calc.Model
         private string ReadDouble(ref int position)
         {
             string number = String.Empty;
-            while (position < input.Length && "1234567890.,".Contains(input[position]))
+            while (position < input.Length && "1234567890,".Contains(input[position]))
             {
-                if (input[position].ToString() == ".")
-                {
-                    number += ",";
-                    position++;
-                }
-                else
-                {
-                    number += input[position];
-                    position++;
-                }
+                number += input[position];
+                position++;
+
             }
             return number;
         }
